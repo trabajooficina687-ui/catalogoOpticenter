@@ -5,7 +5,7 @@ import ProductModal from "./components/ProductModal";
 import { Product } from "./types";
 
 // Replace this URL with your Google Apps Script Web App URL
-const API_URL = "https://script.google.com/macros/s/AKfycbzTdX9fmTJFhVZOfmP7r_Qwj8xD93tKvPSoPTyOW0W7LdslQZUIBr-4cOWwYK6W9M8x/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbwzDXslKfMv9QxwHictyRX7G2-gfn6_xyw2BaBSBWstL-uqjnHMyTXuvenWXspRDSh8/exec";
 
 // Mock data for initial development/preview if API_URL is not set
 const MOCK_DATA: Product[] = [
@@ -114,10 +114,10 @@ export default function App() {
 
           {/* Center: Text Logo */}
           <div className="flex-shrink-0 flex flex-col items-center">
-            <h1 className="text-4xl sm:text-5xl font-black tracking-tighter text-contrast leading-none">
+            <h1 className="text-4xl sm:text-5xl font-light tracking-[0.15em] text-contrast leading-none">
               OPTICENTER
             </h1>
-            <div className="h-1.5 w-full bg-primary mt-1.5 rounded-full"></div>
+            <div className="h-0.5 w-full bg-primary mt-2 rounded-full"></div>
           </div>
 
           {/* Right: Cart */}
@@ -272,9 +272,8 @@ export default function App() {
             <div>
               <h4 className="font-bold mb-6">Horario</h4>
               <ul className="text-gray-400 text-sm space-y-4">
-                <li>Lunes - Viernes: 9:00 - 19:00</li>
-                <li>Sábados: 10:00 - 14:00</li>
-                <li>Domingos: Cerrado</li>
+                <li>Lunes - Viernes: 9:00 a 13:00 - 16:00 a 19:30</li>
+                <li>Sábados: 09:00 - 13:00</li>
               </ul>
             </div>
           </div>
