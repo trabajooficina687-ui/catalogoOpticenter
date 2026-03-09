@@ -5,7 +5,7 @@ import ProductModal from "./components/ProductModal";
 import { Product } from "./types";
 
 // Replace this URL with your Google Apps Script Web App URL
-const API_URL = "https://script.google.com/macros/s/AKfycbzcy4Et5Cl7aEatZ4ZO5N44N6aIercIHvo1foR4lKv3c3nwnvBIYiNaE4Q31wFNll7X/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbxFAEvMVSsxQ6QPSSGaSukQ6niXeCd2eWZ-NGUgqq_HNS4ftZr-kXzOxD0XDURHNtV0/exec";
 
 // Mock data for initial development/preview if API_URL is not set
 const MOCK_DATA: Product[] = [
@@ -97,7 +97,7 @@ export default function App() {
     <div className="min-h-screen flex flex-col">
       {/* Header */}
       <header className="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-28 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-40 sm:h-48 flex items-center justify-between">
           {/* Left: Search */}
           <div className="flex-1 hidden md:flex items-center">
             <div className="flex items-center bg-bg-custom rounded-full px-4 py-2 w-64 border border-gray-200 focus-within:border-primary/30 transition-all">
@@ -113,11 +113,11 @@ export default function App() {
           </div>
 
           {/* Center: Logo */}
-          <div className="flex-shrink-0 flex justify-center">
+          <div className="flex-shrink-0 flex justify-center items-center">
             <img 
               src="https://i.postimg.cc/LsD2HcjN/Whats-App-Image-2026-03-09-at-10-16-27.jpg" 
               alt="OptiCenter Logo" 
-              className="h-20 sm:h-24 w-auto object-contain"
+              className="h-32 sm:h-40 w-auto object-contain scale-125 sm:scale-150"
               referrerPolicy="no-referrer"
             />
           </div>
@@ -125,8 +125,8 @@ export default function App() {
           {/* Right: Cart */}
           <div className="flex-1 flex justify-end items-center gap-4">
             <button className="p-2 text-contrast hover:text-primary transition-colors relative">
-              <ShoppingBag size={24} />
-              <span className="absolute top-1 right-1 w-2 h-2 bg-primary rounded-full"></span>
+              <ShoppingBag size={28} />
+              <span className="absolute top-1 right-1 w-2.5 h-2.5 bg-primary rounded-full border-2 border-white"></span>
             </button>
           </div>
         </div>
