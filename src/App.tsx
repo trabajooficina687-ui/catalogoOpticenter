@@ -5,7 +5,7 @@ import ProductModal from "./components/ProductModal";
 import { Product } from "./types";
 
 // Replace this URL with your Google Apps Script Web App URL
-const API_URL = "https://script.google.com/macros/s/AKfycbyNwN65IBL9obCUf6PBayZv0wlAsuj7WmnyxWqu1m7txi2YEbb9Zo3FzhuixYhKLBWQ/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbys5doQBmBRy6i0qT5nezksDJc8XOjnDKD1wcPtLpY5nldZuTNlhIRhtrMWIZIbDUVq7/exec";
 
 // Mock data for initial development/preview if API_URL is not set
 const MOCK_DATA: Product[] = [
@@ -162,7 +162,7 @@ export default function App() {
         </section>
 
         {/* Catalog Grid */}
-        <section id="catalogo" className="py-16 bg-white">
+        <section id="catalogo" className="py-16 bg-bg-custom">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
               <div>
@@ -170,7 +170,7 @@ export default function App() {
                 <p className="text-gray-500">Explora nuestras últimas tendencias en óptica.</p>
               </div>
               
-              <div className="md:hidden flex items-center bg-bg-custom rounded-full px-4 py-2 border border-gray-200">
+              <div className="md:hidden flex items-center bg-white rounded-full px-4 py-2 border border-gray-200">
                 <Search className="text-gray-400 mr-2" size={18} />
                 <input 
                   type="text" 
@@ -185,10 +185,10 @@ export default function App() {
             {loading ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 {[1, 2, 3, 4].map((n) => (
-                  <div key={n} className="animate-pulse">
-                    <div className="bg-gray-200 aspect-square rounded-2xl mb-4" />
-                    <div className="h-4 bg-gray-200 rounded w-3/4 mb-2" />
-                    <div className="h-4 bg-gray-200 rounded w-1/2" />
+                  <div key={n} className="bg-white p-4 rounded-2xl shadow-sm animate-pulse">
+                    <div className="bg-gray-100 aspect-square rounded-xl mb-4" />
+                    <div className="h-4 bg-gray-100 rounded w-3/4 mb-2" />
+                    <div className="h-4 bg-gray-100 rounded w-1/2" />
                   </div>
                 ))}
               </div>
@@ -200,30 +200,36 @@ export default function App() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: idx * 0.1 }}
-                    className="group cursor-pointer"
+                    className="group bg-white p-4 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer border border-transparent hover:border-primary/10"
                     onClick={() => setSelectedProduct(product)}
                   >
-                    <div className="relative aspect-square bg-bg-custom rounded-2xl overflow-hidden mb-4 border border-transparent group-hover:border-primary/20 transition-all">
+                    <div className="relative aspect-square bg-bg-custom rounded-xl overflow-hidden mb-4">
                       <img
                         src={product.imagenPrincipal}
                         alt={product.titulo}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                         referrerPolicy="no-referrer"
                       />
-                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors" />
-                      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 translate-y-10 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                        <button className="bg-white text-contrast px-4 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-2">
-                          <Eye size={16} />
-                          Ver Detalles
-                        </button>
+                      <div className="absolute inset-0 bg-contrast/0 group-hover:bg-contrast/5 transition-colors" />
+                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="bg-white/90 backdrop-blur-sm text-contrast px-4 py-2 rounded-full text-xs font-bold shadow-xl transform translate-y-4 group-hover:translate-y-0 transition-transform">
+                          VER DETALLES
+                        </div>
                       </div>
                     </div>
-                    <h3 className="font-bold text-contrast group-hover:text-primary transition-colors">
-                      {product.titulo}
-                    </h3>
-                    <p className="text-primary font-bold mt-1">
-                      ${product.precio}
-                    </p>
+                    <div className="px-1">
+                      <h3 className="font-bold text-contrast text-lg leading-tight mb-1 group-hover:text-primary transition-colors">
+                        {product.titulo}
+                      </h3>
+                      <div className="flex items-center justify-between mt-3">
+                        <p className="text-primary font-bold text-xl">
+                          ${product.precio}
+                        </p>
+                        <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
+                          <Eye size={16} />
+                        </div>
+                      </div>
+                    </div>
                   </motion.div>
                 ))}
               </div>
