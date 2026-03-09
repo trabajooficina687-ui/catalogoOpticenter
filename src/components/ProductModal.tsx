@@ -132,7 +132,13 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
 
               <div className="mt-12 pt-8 border-t border-gray-100">
                 <a
-                  href={product.linkPago}
+                  href={`https://wa.me/5493815635941?text=${encodeURIComponent(`¡Hola! Estoy interesado en este producto:
+                  
+📌 *${product.titulo}*
+💰 Precio: $${product.precio}
+🖼️ Ver foto: ${product.imagenPrincipal}
+
+Vengo desde el catálogo online.`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full bg-contrast text-white py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 hover:bg-primary transition-all shadow-xl hover:shadow-primary/20 active:scale-[0.98]"
