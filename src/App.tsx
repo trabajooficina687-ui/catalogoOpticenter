@@ -5,7 +5,7 @@ import ProductModal from "./components/ProductModal";
 import { Product } from "./types";
 
 // Replace this URL with your Google Apps Script Web App URL
-const API_URL = "https://script.google.com/macros/s/AKfycbwzDXslKfMv9QxwHictyRX7G2-gfn6_xyw2BaBSBWstL-uqjnHMyTXuvenWXspRDSh8/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbwalSbcXfyDHQKr-L18jd2KqiKHY39Jv8RD8k7kAiYkLOZTS0orM4DidwXJH8cQ9mdd/exec";
 
 // Mock data for initial development/preview if API_URL is not set
 const MOCK_DATA: Product[] = [
@@ -112,12 +112,25 @@ export default function App() {
             </div>
           </div>
 
-          {/* Center: Text Logo */}
-          <div className="flex-shrink-0 flex flex-col items-center">
-            <h1 className="text-4xl sm:text-5xl font-light tracking-[0.15em] text-contrast leading-none">
-              OPTICENTER
-            </h1>
-            <div className="h-0.5 w-full bg-primary mt-2 rounded-full"></div>
+          {/* Center: Brand Logo */}
+          <div className="flex-shrink-0 flex items-center gap-3 sm:gap-4">
+            {/* Symbol OC */}
+            <svg width="100" height="50" viewBox="0 0 100 50" className="h-12 sm:h-16 w-auto">
+              <rect x="0" y="15" width="6" height="20" rx="2" fill="#ea2221" />
+              <g fill="none" stroke="black" strokeWidth="4.5" strokeLinecap="round">
+                <circle cx="32" cy="25" r="14" />
+                <path d="M58 11 A 14 14 0 1 1 58 39" />
+                <path d="M32 11 A 14 14 0 0 1 46 25" />
+              </g>
+            </svg>
+
+            {/* Text OPTICENTER */}
+            <div className="flex flex-col items-start">
+              <h1 className="text-2xl sm:text-4xl font-brand font-bold tracking-tight text-contrast leading-none">
+                OPTICENTER
+              </h1>
+              <div className="h-1 w-full bg-primary mt-1.5"></div>
+            </div>
           </div>
 
           {/* Right: Cart */}
@@ -272,8 +285,9 @@ export default function App() {
             <div>
               <h4 className="font-bold mb-6">Horario</h4>
               <ul className="text-gray-400 text-sm space-y-4">
-                <li>Lunes - Viernes: 9:00 a 13:00 - 16:00 a 19:30</li>
-                <li>Sábados: 09:00 - 13:00</li>
+                <li>Lunes - Viernes: 9:00 - 19:00</li>
+                <li>Sábados: 10:00 - 14:00</li>
+                <li>Domingos: Cerrado</li>
               </ul>
             </div>
           </div>
