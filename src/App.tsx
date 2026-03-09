@@ -5,7 +5,7 @@ import ProductModal from "./components/ProductModal";
 import { Product } from "./types";
 
 // Replace this URL with your Google Apps Script Web App URL
-const API_URL = "https://script.google.com/macros/s/AKfycby5doQBmBRy6i0qT5nezkSDjC8XOjnDKD1wcPtLpY5nldZuTNlhIRhtrMWIZIbDUVq7/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbys__WJnCD35QdnHYjKKIMd4xVeueFQLh6K7WHlthtg5cfOjtZGlqEgyUU-Ss724Q7F/exec";
 
 // Mock data for initial development/preview if API_URL is not set
 const MOCK_DATA: Product[] = [
@@ -56,30 +56,35 @@ export default function App() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        console.log("Intentando conectar a:", API_URL);
-        
         if (API_URL.includes("YOUR_SCRIPT_ID")) {
-          console.warn("API_URL no configurada. Usando datos de prueba.");
           setProducts(MOCK_DATA);
           setLoading(false);
           return;
         }
 
-        const response = await fetch(API_URL);
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        // Google Apps Script requiere seguir redirecciones (comportamiento por defecto de fetch)
+        const response = await fetch(API_URL, {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json',
+          },
+        });
+
+        if (!response.ok) throw new Error(`Error de red: ${response.status}`);
         
         const data = await response.json();
-        console.log("Datos recibidos de la hoja:", data);
         
         if (Array.isArray(data) && data.length > 0) {
+          console.log("✅ Conexión exitosa. Productos cargados:", data.length);
           setProducts(data);
         } else {
-          console.warn("La hoja parece estar vacía o el formato es incorrecto.");
+          console.warn("⚠️ La conexión funcionó pero la hoja parece estar vacía.");
           setProducts(MOCK_DATA);
         }
       } catch (error) {
-        console.error("Error detallado al traer productos:", error);
-        setProducts(MOCK_DATA); 
+        console.error("❌ Error al conectar con Google Sheets:", error);
+        // Si hay error, mostramos los mock para que el sitio no se vea vacío
+        setProducts(MOCK_DATA);
       } finally {
         setLoading(false);
       }
