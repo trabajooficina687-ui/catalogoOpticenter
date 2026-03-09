@@ -5,46 +5,54 @@ import ProductModal from "./components/ProductModal";
 import { Product } from "./types";
 
 // Replace this URL with your Google Apps Script Web App URL
-const API_URL = "https://script.google.com/macros/s/AKfycbwo4pXkoINnMO5IsThVucQZpqSMzEda57eFq4Jxcu4SBXZgtU6nq7dEXgW-RWfN6uE/exec";
+const API_URL =
+  "https://script.google.com/macros/s/AKfycbwo4pXkoINnMO5IsThVucQZpqSMzEda57eFq4Jxcu4SBXZgtU6nq7dEXgW-RWfN6uE/exec";
 
 // Mock data for initial development/preview if API_URL is not set
 const MOCK_DATA: Product[] = [
   {
     id: 1,
     titulo: "Lentes Aviador Classic",
-    descripcion: "Diseño icónico con montura metálica dorada y cristales polarizados de alta calidad. Protección UV400 completa.",
+    descripcion:
+      "Diseño icónico con montura metálica dorada y cristales polarizados de alta calidad. Protección UV400 completa.",
     precio: "120.00",
     imagenPrincipal: "https://picsum.photos/seed/glasses1/600/600",
-    imagenesAdicionales: ["https://picsum.photos/seed/glasses1-side/600/600", "https://picsum.photos/seed/glasses1-case/600/600"],
-    linkPago: "#"
+    imagenesAdicionales: [
+      "https://picsum.photos/seed/glasses1-side/600/600",
+      "https://picsum.photos/seed/glasses1-case/600/600",
+    ],
+    linkPago: "#",
   },
   {
     id: 2,
     titulo: "Montura Wayfarer Black",
-    descripcion: "Estilo atemporal en acetato negro brillante. Ligero, resistente y perfecto para cualquier ocasión.",
+    descripcion:
+      "Estilo atemporal en acetato negro brillante. Ligero, resistente y perfecto para cualquier ocasión.",
     precio: "95.00",
     imagenPrincipal: "https://picsum.photos/seed/glasses2/600/600",
     imagenesAdicionales: ["https://picsum.photos/seed/glasses2-side/600/600"],
-    linkPago: "#"
+    linkPago: "#",
   },
   {
     id: 3,
     titulo: "Lentes de Lectura Slim",
-    descripcion: "Montura ultra delgada y flexible. Ideal para lectura prolongada con filtro de luz azul incluido.",
+    descripcion:
+      "Montura ultra delgada y flexible. Ideal para lectura prolongada con filtro de luz azul incluido.",
     precio: "45.00",
     imagenPrincipal: "https://picsum.photos/seed/glasses3/600/600",
     imagenesAdicionales: [],
-    linkPago: "#"
+    linkPago: "#",
   },
   {
     id: 4,
     titulo: "Gafas de Sol Sport Pro",
-    descripcion: "Diseñadas para el rendimiento. Montura envolvente con agarre antideslizante y lentes de alto contraste.",
+    descripcion:
+      "Diseñadas para el rendimiento. Montura envolvente con agarre antideslizante y lentes de alto contraste.",
     precio: "150.00",
     imagenPrincipal: "https://picsum.photos/seed/glasses4/600/600",
     imagenesAdicionales: ["https://picsum.photos/seed/glasses4-alt/600/600"],
-    linkPago: "#"
-  }
+    linkPago: "#",
+  },
 ];
 
 export default function App() {
@@ -66,14 +74,16 @@ export default function App() {
         const response = await fetch(API_URL);
 
         if (!response.ok) throw new Error(`Error de red: ${response.status}`);
-        
+
         const data = await response.json();
-        
+
         if (Array.isArray(data) && data.length > 0) {
           console.log("✅ Conexión exitosa. Productos cargados:", data.length);
           setProducts(data);
         } else {
-          console.warn("⚠️ La conexión funcionó pero la hoja parece estar vacía.");
+          console.warn(
+            "⚠️ La conexión funcionó pero la hoja parece estar vacía.",
+          );
           setProducts(MOCK_DATA);
         }
       } catch (error) {
@@ -88,9 +98,10 @@ export default function App() {
     fetchProducts();
   }, []);
 
-  const filteredProducts = products.filter(p => 
-    p.titulo.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    p.descripcion.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredProducts = products.filter(
+    (p) =>
+      p.titulo.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      p.descripcion.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   return (
@@ -102,9 +113,9 @@ export default function App() {
           <div className="flex-1 hidden md:flex items-center">
             <div className="flex items-center bg-bg-custom rounded-full px-4 py-2 w-64 border border-gray-200 focus-within:border-primary/30 transition-all">
               <Search className="text-gray-400 mr-2" size={16} />
-              <input 
-                type="text" 
-                placeholder="Buscar..." 
+              <input
+                type="text"
+                placeholder="Buscar..."
                 className="bg-transparent border-none outline-none w-full text-xs"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
@@ -115,9 +126,19 @@ export default function App() {
           {/* Center: Brand Logo */}
           <div className="flex-shrink-0 flex items-center gap-1 sm:gap-2">
             {/* Symbol OC */}
-            <svg width="85" height="50" viewBox="0 0 85 50" className="h-12 sm:h-16 w-auto">
+            <svg
+              width="85"
+              height="50"
+              viewBox="0 0 85 50"
+              className="h-12 sm:h-16 w-auto"
+            >
               <rect x="0" y="15" width="6" height="20" rx="2" fill="#ea2221" />
-              <g fill="none" stroke="black" strokeWidth="4.5" strokeLinecap="round">
+              <g
+                fill="none"
+                stroke="black"
+                strokeWidth="4.5"
+                strokeLinecap="round"
+              >
                 {/* The 'O' */}
                 <circle cx="32" cy="25" r="14" />
                 {/* The 'C' corrected direction */}
@@ -148,7 +169,7 @@ export default function App() {
         {/* Hero Section */}
         <section className="relative py-20 overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -162,10 +183,15 @@ export default function App() {
                 <span className="text-primary">en cada mirada.</span>
               </h1>
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                Descubre nuestra selección exclusiva de monturas y lentes diseñados para elevar tu estilo personal mientras cuidamos de tu salud visual.
+                Descubre nuestra selección exclusiva de monturas y lentes
+                diseñados para elevar tu estilo personal mientras cuidamos de tu
+                salud visual.
               </p>
               <div className="flex flex-wrap gap-4">
-                <a href="#catalogo" className="bg-contrast text-white px-8 py-4 rounded-xl font-semibold hover:bg-opacity-90 transition-all">
+                <a
+                  href="#catalogo"
+                  className="bg-contrast text-white px-8 py-4 rounded-xl font-semibold hover:bg-opacity-90 transition-all"
+                >
                   Ver Catálogo
                 </a>
                 <button className="border border-gray-300 text-contrast px-8 py-4 rounded-xl font-semibold hover:bg-gray-50 transition-all">
@@ -174,7 +200,7 @@ export default function App() {
               </div>
             </motion.div>
           </div>
-          
+
           {/* Decorative background element */}
           <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/5 -skew-x-12 translate-x-1/4 z-0 hidden lg:block" />
         </section>
@@ -184,15 +210,21 @@ export default function App() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
               <div>
-                <h2 className="text-3xl font-bold text-contrast mb-2">Catálogo de Productos</h2>
-                <p className="text-gray-500">Explora nuestras últimas tendencias en óptica.</p>
+                <h2 className="text-3xl font-bold text-contrast mb-2">
+                  Catálogo de Productos
+                </h2>
+                <p className="text-gray-500">
+                  Producto OUTLET. No se realizan cambios ni devoluciones. Puede
+                  presentar leves detalles estéticos que no afectan su
+                  funcionalidad ni calidad óptica.
+                </p>
               </div>
-              
+
               <div className="md:hidden flex items-center bg-white rounded-full px-4 py-2 border border-gray-200">
                 <Search className="text-gray-400 mr-2" size={18} />
-                <input 
-                  type="text" 
-                  placeholder="Buscar..." 
+                <input
+                  type="text"
+                  placeholder="Buscar..."
                   className="bg-transparent border-none outline-none w-full text-sm"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
@@ -203,7 +235,10 @@ export default function App() {
             {loading ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 {[1, 2, 3, 4].map((n) => (
-                  <div key={n} className="bg-white p-4 rounded-2xl shadow-sm animate-pulse">
+                  <div
+                    key={n}
+                    className="bg-white p-4 rounded-2xl shadow-sm animate-pulse"
+                  >
                     <div className="bg-gray-100 aspect-square rounded-xl mb-4" />
                     <div className="h-4 bg-gray-100 rounded w-3/4 mb-2" />
                     <div className="h-4 bg-gray-100 rounded w-1/2" />
@@ -257,7 +292,9 @@ export default function App() {
               </div>
             ) : (
               <div className="text-center py-20">
-                <p className="text-gray-500 text-lg">No se encontraron productos que coincidan con tu búsqueda.</p>
+                <p className="text-gray-500 text-lg">
+                  No se encontraron productos que coincidan con tu búsqueda.
+                </p>
               </div>
             )}
           </div>
@@ -271,9 +308,26 @@ export default function App() {
             <div>
               {/* Footer Logo */}
               <div className="flex items-center gap-2 mb-6">
-                <svg width="85" height="50" viewBox="0 0 85 50" className="h-10 w-auto">
-                  <rect x="0" y="15" width="6" height="20" rx="2" fill="#ea2221" />
-                  <g fill="none" stroke="white" strokeWidth="4.5" strokeLinecap="round">
+                <svg
+                  width="85"
+                  height="50"
+                  viewBox="0 0 85 50"
+                  className="h-10 w-auto"
+                >
+                  <rect
+                    x="0"
+                    y="15"
+                    width="6"
+                    height="20"
+                    rx="2"
+                    fill="#ea2221"
+                  />
+                  <g
+                    fill="none"
+                    stroke="white"
+                    strokeWidth="4.5"
+                    strokeLinecap="round"
+                  >
                     <circle cx="32" cy="25" r="14" />
                     <path d="M68 15 A 14 14 0 1 0 68 35" />
                   </g>
@@ -286,7 +340,8 @@ export default function App() {
                 </div>
               </div>
               <p className="text-gray-400 text-sm leading-relaxed">
-                OptiCenter: Tu visión es nuestra prioridad. Ofrecemos las mejores marcas y el asesoramiento profesional que necesitas.
+                OptiCenter: Tu visión es nuestra prioridad. Ofrecemos las
+                mejores marcas y el asesoramiento profesional que necesitas.
               </p>
             </div>
             <div>
@@ -313,9 +368,9 @@ export default function App() {
       </footer>
 
       {/* Product Modal */}
-      <ProductModal 
-        product={selectedProduct} 
-        onClose={() => setSelectedProduct(null)} 
+      <ProductModal
+        product={selectedProduct}
+        onClose={() => setSelectedProduct(null)}
       />
     </div>
   );
