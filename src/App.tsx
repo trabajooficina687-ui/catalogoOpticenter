@@ -5,7 +5,7 @@ import ProductModal from "./components/ProductModal";
 import { Product } from "./types";
 
 // Replace this URL with your Google Apps Script Web App URL
-const API_URL = "https://script.google.com/macros/s/AKfycbz7z6cZiVkdVQL0UTWwFt53Qb4GkP6j1_SG8yfdXjh7Ru01OqFZsQNNC-ZEo_jKB7Xp/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycby5doQBmBRy6i0qT5nezkSDjC8XOjnDKD1wcPtLpY5nldZuTNlhIRhtrMWIZIbDUVq7/exec";
 
 // Mock data for initial development/preview if API_URL is not set
 const MOCK_DATA: Product[] = [
@@ -56,19 +56,30 @@ export default function App() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        // If API_URL is still placeholder, use mock data
+        console.log("Intentando conectar a:", API_URL);
+        
         if (API_URL.includes("YOUR_SCRIPT_ID")) {
+          console.warn("API_URL no configurada. Usando datos de prueba.");
           setProducts(MOCK_DATA);
           setLoading(false);
           return;
         }
 
         const response = await fetch(API_URL);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        
         const data = await response.json();
-        setProducts(data);
+        console.log("Datos recibidos de la hoja:", data);
+        
+        if (Array.isArray(data) && data.length > 0) {
+          setProducts(data);
+        } else {
+          console.warn("La hoja parece estar vacía o el formato es incorrecto.");
+          setProducts(MOCK_DATA);
+        }
       } catch (error) {
-        console.error("Error fetching products:", error);
-        setProducts(MOCK_DATA); // Fallback to mock data on error
+        console.error("Error detallado al traer productos:", error);
+        setProducts(MOCK_DATA); 
       } finally {
         setLoading(false);
       }
