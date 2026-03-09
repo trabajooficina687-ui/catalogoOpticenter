@@ -1,0 +1,5 @@
+{
+  "name": "OptiCenter Catalog",
+  "description": "A minimalist and professional catalog for OptiCenter optical shop, integrated with Google Sheets via Google Apps Script.",
+  "requestFramePermissions": []
+}
