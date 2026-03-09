@@ -347,16 +347,16 @@ export default function App() {
             <div>
               <h4 className="font-bold mb-6">Contacto</h4>
               <ul className="text-gray-400 text-sm space-y-4">
-                <li>Calle Principal #123, Ciudad</li>
-                <li>Tel: +1 234 567 890</li>
+                <li>Maipú 241 San Miguel de Tucumán | Junin 466 San Miguel de Tucumán</li>
+                <li>Tel: 3815635941</li>
                 <li>Email: info@opticenter.com</li>
               </ul>
             </div>
             <div>
               <h4 className="font-bold mb-6">Horario</h4>
               <ul className="text-gray-400 text-sm space-y-4">
-                <li>Lunes - Viernes: 9:00 - 19:00</li>
-                <li>Sábados: 10:00 - 14:00</li>
+                <li>Lunes - Viernes: 9:00 - 13:00 16:00 - 19:30</li>
+                <li>Sábados: 9:00 - 13:00</li>
                 <li>Domingos: Cerrado</li>
               </ul>
             </div>
