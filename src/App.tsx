@@ -5,7 +5,7 @@ import ProductModal from "./components/ProductModal";
 import { Product } from "./types";
 
 // Replace this URL with your Google Apps Script Web App URL
-const API_URL = "https://script.google.com/macros/s/AKfycbys5doQBmBRy6i0qT5nezksDJc8XOjnDKD1wcPtLpY5nldZuTNlhIRhtrMWIZIbDUVq7/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbzcy4Et5Cl7aEatZ4ZO5N44N6aIercIHvo1foR4lKv3c3nwnvBIYiNaE4Q31wFNll7X/exec";
 
 // Mock data for initial development/preview if API_URL is not set
 const MOCK_DATA: Product[] = [
