@@ -5,7 +5,7 @@ import ProductModal from "./components/ProductModal";
 import { Product } from "./types";
 
 // Replace this URL with your Google Apps Script Web App URL
-const API_URL = "https://script.google.com/macros/s/AKfycbwalSbcXfyDHQKr-L18jd2KqiKHY39Jv8RD8k7kAiYkLOZTS0orM4DidwXJH8cQ9mdd/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbwo4pXkoINnMO5IsThVucQZpqSMzEda57eFq4Jxcu4SBXZgtU6nq7dEXgW-RWfN6uE/exec";
 
 // Mock data for initial development/preview if API_URL is not set
 const MOCK_DATA: Product[] = [
@@ -113,14 +113,15 @@ export default function App() {
           </div>
 
           {/* Center: Brand Logo */}
-          <div className="flex-shrink-0 flex items-center gap-3 sm:gap-4">
+          <div className="flex-shrink-0 flex items-center gap-1 sm:gap-2">
             {/* Symbol OC */}
-            <svg width="100" height="50" viewBox="0 0 100 50" className="h-12 sm:h-16 w-auto">
+            <svg width="85" height="50" viewBox="0 0 85 50" className="h-12 sm:h-16 w-auto">
               <rect x="0" y="15" width="6" height="20" rx="2" fill="#ea2221" />
               <g fill="none" stroke="black" strokeWidth="4.5" strokeLinecap="round">
+                {/* The 'O' */}
                 <circle cx="32" cy="25" r="14" />
-                <path d="M58 11 A 14 14 0 1 1 58 39" />
-                <path d="M32 11 A 14 14 0 0 1 46 25" />
+                {/* The 'C' corrected direction */}
+                <path d="M68 15 A 14 14 0 1 0 68 35" />
               </g>
             </svg>
 
@@ -264,12 +265,22 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             <div>
-              <img 
-                src="https://i.postimg.cc/LsD2HcjN/Whats-App-Image-2026-03-09-at-10-16-27.jpg" 
-                alt="OptiCenter Logo" 
-                className="h-10 w-auto brightness-0 invert mb-6"
-                referrerPolicy="no-referrer"
-              />
+              {/* Footer Logo */}
+              <div className="flex items-center gap-2 mb-6">
+                <svg width="85" height="50" viewBox="0 0 85 50" className="h-10 w-auto">
+                  <rect x="0" y="15" width="6" height="20" rx="2" fill="#ea2221" />
+                  <g fill="none" stroke="white" strokeWidth="4.5" strokeLinecap="round">
+                    <circle cx="32" cy="25" r="14" />
+                    <path d="M68 15 A 14 14 0 1 0 68 35" />
+                  </g>
+                </svg>
+                <div className="flex flex-col items-start">
+                  <span className="text-xl font-brand font-bold tracking-tight text-white leading-none">
+                    OPTICENTER
+                  </span>
+                  <div className="h-0.5 w-full bg-primary mt-1"></div>
+                </div>
+              </div>
               <p className="text-gray-400 text-sm leading-relaxed">
                 OptiCenter: Tu visión es nuestra prioridad. Ofrecemos las mejores marcas y el asesoramiento profesional que necesitas.
               </p>
