@@ -5,7 +5,7 @@ import ProductModal from "./components/ProductModal";
 import { Product } from "./types";
 
 // Replace this URL with your Google Apps Script Web App URL
-const API_URL = "https://script.google.com/macros/s/AKfycbys__WJnCD35QdnHYjKKIMd4xVeueFQLh6K7WHlthtg5cfOjtZGlqEgyUU-Ss724Q7F/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbx9boA8NniiJeR2Es7wB_uacaoy2u0o_e0pcqdaUZiIP78NvOu9GlZQaRQSLF130WFC/exec";
 
 // Mock data for initial development/preview if API_URL is not set
 const MOCK_DATA: Product[] = [
@@ -62,13 +62,8 @@ export default function App() {
           return;
         }
 
-        // Google Apps Script requiere seguir redirecciones (comportamiento por defecto de fetch)
-        const response = await fetch(API_URL, {
-          method: 'GET',
-          headers: {
-            'Accept': 'application/json',
-          },
-        });
+        // Llamada simplificada para evitar problemas de CORS con Google
+        const response = await fetch(API_URL);
 
         if (!response.ok) throw new Error(`Error de red: ${response.status}`);
         
