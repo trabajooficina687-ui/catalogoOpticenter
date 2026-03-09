@@ -5,7 +5,7 @@ import ProductModal from "./components/ProductModal";
 import { Product } from "./types";
 
 // Replace this URL with your Google Apps Script Web App URL
-const API_URL = "https://script.google.com/macros/s/AKfycbxFAEvMVSsxQ6QPSSGaSukQ6niXeCd2eWZ-NGUgqq_HNS4ftZr-kXzOxD0XDURHNtV0/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbzTdX9fmTJFhVZOfmP7r_Qwj8xD93tKvPSoPTyOW0W7LdslQZUIBr-4cOWwYK6W9M8x/exec";
 
 // Mock data for initial development/preview if API_URL is not set
 const MOCK_DATA: Product[] = [
@@ -97,7 +97,7 @@ export default function App() {
     <div className="min-h-screen flex flex-col">
       {/* Header */}
       <header className="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-40 sm:h-48 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-32 flex items-center justify-between">
           {/* Left: Search */}
           <div className="flex-1 hidden md:flex items-center">
             <div className="flex items-center bg-bg-custom rounded-full px-4 py-2 w-64 border border-gray-200 focus-within:border-primary/30 transition-all">
@@ -112,14 +112,12 @@ export default function App() {
             </div>
           </div>
 
-          {/* Center: Logo */}
-          <div className="flex-shrink-0 flex justify-center items-center">
-            <img 
-              src="https://i.postimg.cc/LsD2HcjN/Whats-App-Image-2026-03-09-at-10-16-27.jpg" 
-              alt="OptiCenter Logo" 
-              className="h-32 sm:h-40 w-auto object-contain scale-125 sm:scale-150"
-              referrerPolicy="no-referrer"
-            />
+          {/* Center: Text Logo */}
+          <div className="flex-shrink-0 flex flex-col items-center">
+            <h1 className="text-4xl sm:text-5xl font-black tracking-tighter text-contrast leading-none">
+              OPTICENTER
+            </h1>
+            <div className="h-1.5 w-full bg-primary mt-1.5 rounded-full"></div>
           </div>
 
           {/* Right: Cart */}
