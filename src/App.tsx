@@ -96,31 +96,37 @@ export default function App() {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Header */}
-      <header className="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-4">
+      <header className="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-28 flex items-center justify-between">
+          {/* Left: Search */}
+          <div className="flex-1 hidden md:flex items-center">
+            <div className="flex items-center bg-bg-custom rounded-full px-4 py-2 w-64 border border-gray-200 focus-within:border-primary/30 transition-all">
+              <Search className="text-gray-400 mr-2" size={16} />
+              <input 
+                type="text" 
+                placeholder="Buscar..." 
+                className="bg-transparent border-none outline-none w-full text-xs"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </div>
+          </div>
+
+          {/* Center: Logo */}
+          <div className="flex-shrink-0 flex justify-center">
             <img 
               src="https://i.postimg.cc/LsD2HcjN/Whats-App-Image-2026-03-09-at-10-16-27.jpg" 
               alt="OptiCenter Logo" 
-              className="h-12 w-auto object-contain"
+              className="h-20 sm:h-24 w-auto object-contain"
               referrerPolicy="no-referrer"
             />
           </div>
-          
-          <div className="hidden md:flex items-center bg-bg-custom rounded-full px-4 py-2 w-96 border border-gray-200">
-            <Search className="text-gray-400 mr-2" size={18} />
-            <input 
-              type="text" 
-              placeholder="Buscar modelos..." 
-              className="bg-transparent border-none outline-none w-full text-sm"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-          </div>
 
-          <div className="flex items-center gap-4">
-            <button className="p-2 text-contrast hover:text-primary transition-colors">
+          {/* Right: Cart */}
+          <div className="flex-1 flex justify-end items-center gap-4">
+            <button className="p-2 text-contrast hover:text-primary transition-colors relative">
               <ShoppingBag size={24} />
+              <span className="absolute top-1 right-1 w-2 h-2 bg-primary rounded-full"></span>
             </button>
           </div>
         </div>
