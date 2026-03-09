@@ -222,6 +222,10 @@ export default function App() {
                     onClick={() => setSelectedProduct(product)}
                   >
                     <div className="relative aspect-square bg-bg-custom rounded-xl overflow-hidden mb-4">
+                      {/* Promo Badge */}
+                      <div className="absolute top-3 left-3 z-10 bg-primary text-white text-[10px] font-black px-2 py-1 rounded-md shadow-lg transform -rotate-2">
+                        PROMO 3x1
+                      </div>
                       <img
                         src={product.imagenPrincipal}
                         alt={product.titulo}
