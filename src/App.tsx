@@ -357,7 +357,6 @@ export default function App() {
               <ul className="text-gray-400 text-sm space-y-4">
                 <li>Lunes - Viernes: 9:00 - 13:00 16:00 - 19:30</li>
                 <li>Sábados: 9:00 - 13:00</li>
-                <li>Domingos: Cerrado</li>
               </ul>
             </div>
           </div>
