@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import { Search, ShoppingBag, Eye } from "lucide-react";
 import ProductModal from "./components/ProductModal";
+import LocationsModal from "./components/LocationsModal";
 import { Product } from "./types";
 
 // Replace this URL with your Google Apps Script Web App URL
@@ -59,6 +60,7 @@ export default function App() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [isLocationsModalOpen, setIsLocationsModalOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
@@ -194,7 +196,10 @@ export default function App() {
                 >
                   Ver Catálogo
                 </a>
-                <button className="border border-gray-300 text-contrast px-8 py-4 rounded-xl font-semibold hover:bg-gray-50 transition-all">
+                <button
+                  onClick={() => setIsLocationsModalOpen(true)}
+                  className="border border-gray-300 text-contrast px-8 py-4 rounded-xl font-semibold hover:bg-gray-50 transition-all"
+                >
                   Nuestra Óptica
                 </button>
               </div>
@@ -214,9 +219,10 @@ export default function App() {
                   Catálogo de Productos
                 </h2>
                 <p className="text-gray-500">
+                  {" "}
                   Producto OUTLET. No se realizan cambios ni devoluciones. Puede
                   presentar leves detalles estéticos que no afectan su
-                  funcionalidad ni calidad óptica.
+                  funcionalidad ni calidad óptica. .
                 </p>
               </div>
 
@@ -347,15 +353,18 @@ export default function App() {
             <div>
               <h4 className="font-bold mb-6">Contacto</h4>
               <ul className="text-gray-400 text-sm space-y-4">
-                <li>Maipú 241 San Miguel de Tucumán | Junin 466 San Miguel de Tucumán</li>
-                <li>Tel: 3815635941</li>
+                <li>
+                  Maipú 241 San Miguel de Tucumán | Junin 466 San Miguel de
+                  Tucumán
+                </li>
+                <li>Tel: +1 234 567 890</li>
                 <li>Email: info@opticenter.com</li>
               </ul>
             </div>
             <div>
               <h4 className="font-bold mb-6">Horario</h4>
               <ul className="text-gray-400 text-sm space-y-4">
-                <li>Lunes - Viernes: 9:00 - 13:00 16:00 - 19:30</li>
+                <li>Lunes - Viernes: 9:00 - 19:30</li>
                 <li>Sábados: 9:00 - 13:00</li>
               </ul>
             </div>
@@ -370,6 +379,12 @@ export default function App() {
       <ProductModal
         product={selectedProduct}
         onClose={() => setSelectedProduct(null)}
+      />
+
+      {/* Locations Modal */}
+      <LocationsModal
+        isOpen={isLocationsModalOpen}
+        onClose={() => setIsLocationsModalOpen(false)}
       />
     </div>
   );
