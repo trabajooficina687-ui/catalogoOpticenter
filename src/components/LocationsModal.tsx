@@ -106,7 +106,7 @@ export default function LocationsModal({ isOpen, onClose }: LocationsModalProps)
 
               <div className="mt-12 pt-8 border-t border-gray-100 text-center">
                 <p className="text-gray-400 text-sm">
-                  Atención de Lunes a Viernes de 9:00 a 19:00 hs.
+                  Atención de Lunes a Viernes de 9:00 a 19:30 hs.
                 </p>
               </div>
             </div>
