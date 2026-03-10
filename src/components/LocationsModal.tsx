@@ -10,7 +10,7 @@ const LOCATIONS = [
   {
     address: "Junin 466, San Miguel de Tucumán",
     link: "https://share.google/etqAs6HfyItLkC89b",
-    description: "Nuestra casa central con la mayor variedad de monturas."
+    description: "Con la mayor variedad de monturas."
   },
   {
     address: "9 de julio 82, San Miguel de Tucumán",
@@ -20,7 +20,7 @@ const LOCATIONS = [
   {
     address: "Maipú 241, San Miguel de Tucumán",
     link: "https://maps.app.goo.gl/kFpdN47ibdfMbScJ9",
-    description: "Atención personalizada y gabinete de contactología."
+    description: "Te esperamos con una buena atención personalizada."
   }
 ];
 
