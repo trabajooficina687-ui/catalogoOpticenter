@@ -357,7 +357,7 @@ export default function App() {
                   Maipú 241 San Miguel de Tucumán | Junin 466 San Miguel de
                   Tucumán
                 </li>
-                <li>Tel: +1 234 567 890</li>
+                <li>Tel: 3815635941</li>
                 <li>Email: info@opticenter.com</li>
               </ul>
             </div>
